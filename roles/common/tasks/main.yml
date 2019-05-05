@@ -1,8 +1,30 @@
 ---
 # tasks file for roles/common
-
-- name: update all of the installed packages
+- name: Update and upgrade all of the installed packages
   apt:
-    name: "*"
-    state: "latest"
-update_cache: "yes"
+    upgrade: yes
+    update_cache: yes
+
+#sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
+- name: add mongo apt-key
+  apt_key:
+    keyserver: hkp://keyserver.ubuntu.com:80
+    id: 9DA31620334BD75D9DCB49F368818C72E52529D4
+
+- name: update repo to add libcurl3
+  shell: echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
+
+- name: install libcurl3
+  apt:
+    name: libcurl3
+
+- name: install mongodb-org
+  apt:
+    name: mongodb-org
+    update_cache: yes
+
+- name: auto start and start the mongodb
+  service:
+    name: mongod
+    enabled: yes
+    state: started
