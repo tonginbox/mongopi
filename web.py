@@ -30,7 +30,8 @@ data = [
 
 @app.route("/")
 def hello():
-    return list_rows(fetch_data_from_mongo())
+    with fetch_data_from_mongo() as rows:
+        return '<body><h1>hi</h1>%s</body>' % list_rows(rows)
 
 
 def list_rows(rows):
