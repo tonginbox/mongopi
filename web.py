@@ -1,7 +1,8 @@
 from flask import Flask
 from pymongo import MongoClient
 
-app = Flask(__name__)
+# complient with uwsgi python
+application = Flask(__name__)
 
 def ObjectId(v):
     return v
@@ -27,7 +28,7 @@ data = [
 ]
 
 
-@app.route("/")
+@application.route("/")
 def hello():
     with fetch_data_from_mongo() as rows:
         return '<body><h1>hi</h1>%s</body>' % list_rows(rows)
