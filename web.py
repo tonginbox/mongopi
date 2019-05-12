@@ -1,4 +1,3 @@
-mongopi01 | SUCCESS | rc=0 >>
 from flask import Flask
 from pymongo import MongoClient
 
