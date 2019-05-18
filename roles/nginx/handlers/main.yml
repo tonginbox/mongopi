@@ -1,7 +1,0 @@
----
-# handlers file for roles/nginx
-- name: restart nginx
-  service:
-    name: nginx
-    enabled: yes
-    state: started
