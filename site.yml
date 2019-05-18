@@ -9,3 +9,4 @@
   roles:
     - roles/common
     - roles/mongodb
+    - roles/nginx
