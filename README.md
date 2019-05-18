@@ -65,3 +65,5 @@ ansible_ssh_pass=<change to your raspberry password>
 ```
 ansible-playbook -i hosts site.yml
 ```
+---
+[![Analytics](https://ga-beacon.appspot.com/UA-140393747-1/welcome-page)](https://github.com/igrigorik/ga-beacon)
