@@ -2,5 +2,5 @@
 # tasks file for roles/common
 - name: Update and upgrade all of the installed packages
   apt:
-    upgrade: yes
+    upgrade: dist
     update_cache: yes
