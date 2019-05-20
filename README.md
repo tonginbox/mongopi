@@ -1,5 +1,5 @@
 # Ansible Playbook Install MongoDb on Ubuntu Raspberry Pi 3
-This is an ansible playbook to install MongoDb 4.0.x to Ubuntu Raspberry Pi 3 Operating System.
+This is an ansible playbook to install MongoDb 4.1.x (unstable) to Ubuntu Raspberry Pi 3 Operating System.
 
 **Note** Raspbian is not supported.
 
