@@ -2,22 +2,22 @@
 - name: add mongo apt-key
   apt_key:
     keyserver: hkp://keyserver.ubuntu.com:80
-    id: 9DA31620334BD75D9DCB49F368818C72E52529D4
+    id: E162F504A20CDF15827F718D4B7C549A058F8B6B
 
+<<<<<<< HEAD
 # mongodb is xenial binary, not fully compatible 
 # with bionic, it requires downgrade libcurl4 to libcurl3
 # then the curl and ubunut-server will be removed
 - name: update repo source for mongodb
   shell: echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
+=======
+- name: update repo to add mongodb 4.1 unstable
+  shell: echo "deb [ trusted=yes arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.1 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-unstable-4.1.list
+>>>>>>> release/v150
 
-- name: install libcurl3
+- name: install mongodb-org-unstable
   apt:
-    name: libcurl3
-    state: present
-
-- name: install mongodb-org
-  apt:
-    name: mongodb-org
+    name: mongodb-org-unstable
     update_cache: yes
     state: present
 
