@@ -1,12 +1,13 @@
 ---
-# tasks file for roles/mongodb
-#sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
 - name: add mongo apt-key
   apt_key:
     keyserver: hkp://keyserver.ubuntu.com:80
     id: 9DA31620334BD75D9DCB49F368818C72E52529D4
 
-- name: update repo to add libcurl3
+# mongodb is xenial binary, not fully compatible 
+# with bionic, it requires downgrade libcurl4 to libcurl3
+# then the curl and ubunut-server will be removed
+- name: update repo source for mongodb
   shell: echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
 
 - name: install libcurl3
