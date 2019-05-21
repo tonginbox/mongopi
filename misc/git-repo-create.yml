@@ -1,0 +1,28 @@
+- hosts: git-repo01
+  vars:
+    repo_root: /repo
+    git_repos: 
+      - mycmds
+
+  tasks:
+    - debug:
+        msg: "repository name {{ repo_root }}/{{ item }}"
+      with_items:
+        - "{{ git_repos }}"        
+
+    - name: create app dir
+      become: yes
+      file:
+        path: "{{ repo_root }}/{{ item }}.git"
+        state: directory
+      with_items:
+        - "{{ git_repos }}"
+
+    - name: init repositories
+      become: yes
+      command: git init --bare
+      args:
+        chdir: "{{ repo_root }}/{{ item }}.git"
+        creates: "{{ repo_root }}/{{ item }}.git/HEAD"
+      with_items:
+        - "{{ git_repos }}"
