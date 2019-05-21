@@ -1,0 +1,3 @@
+---
+# vars file for roles/git-server
+repo_root: /repo

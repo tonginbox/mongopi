@@ -1,4 +1,4 @@
-- hosts: site
+- hosts: git-server
   gather_facts: true
   become: yes
   become_method: sudo
@@ -8,3 +8,4 @@
 
   roles:
     - roles/common
+    - roles/git-server

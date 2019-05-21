@@ -1,0 +1,12 @@
+---
+# tasks file for roles/git-server
+- name: install git core
+  apt:
+    name: git-core
+    update_cache: yes
+    state: present
+
+- name: create app dir
+  file:
+    path: '{{ repo_root }}'
+    state: directory
