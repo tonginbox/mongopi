@@ -6,3 +6,9 @@
     name: mongod
     enabled: yes
     state: restarted
+
+- name: restart dpyhs-swapfile
+  service:
+    name: dphys-swapfile
+    enabled: yes
+    state: restarted

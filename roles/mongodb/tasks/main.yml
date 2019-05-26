@@ -18,3 +18,15 @@
     src: "mongod.conf.j2"
     dest: "/etc/mongod.conf"
   notify: "restart mongodb"
+
+- name: prepare to create swap file
+  apt:
+    name: dphys-swapfile
+    update_cache: yes
+    state: present
+
+- name: configure swap file size
+  template:
+    src: "dphys-swapfile.j2"
+    dest: "/etc/dphys-swapfile"
+  notify: "restart dpyhs-swapfile"
