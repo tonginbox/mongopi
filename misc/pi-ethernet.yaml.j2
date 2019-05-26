@@ -1,0 +1,24 @@
+# {{ ansible_managed }}
+
+network:
+    version: 2
+    ethernets:
+        eth0:
+            dhcp4: no
+            addresses: {{ eth0_ip_addresses }}
+            match:
+                macaddress: {{ eth0_mac_address }}
+            gateway4: {{ gateway_v4 }}
+            nameservers:
+                addresses: {{ dns_servers_addrs }}
+            set-name: eth0
+    wifis:
+        wlan0:
+            dhcp4: yes
+            dhcp6: no
+            nameservers:
+                addresses: {{ dns_servers_addrs }}
+            access-points:
+                "{{ wifi_ssid }}":
+                    password: "{{ wifi_wpa_key }}"
+

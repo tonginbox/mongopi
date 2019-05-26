@@ -1,0 +1,20 @@
+- hosts: raspberrypi
+  become: yes
+  vars:
+    eth0_mac_address: 'b8:27:eb:11:22:33'
+    eth0_ip_addresses: [ 192.168.1.10/24 ]
+    gateway_v4: 192.168.1.1
+    dns_servers_addrs: [ 1.1.1.1, 8.8.8.8 ]
+    wifi_ssid: 'ssid name'
+    wifi_wpa_key: 'wpa key'
+
+  handlers:
+    - name: 'netplan apply'
+      command: netplan apply
+
+  tasks:
+    - name: config mongodb network interface
+      template:
+        src: "pi-ethernet.yaml.j2"
+        dest: "/etc/netplan/50-cloud-init.yaml"
+      notify: "netplan apply"
