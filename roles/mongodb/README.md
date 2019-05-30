@@ -1,4 +1,4 @@
-MongoDb (to be completed)
+MongoDb
 =========
 
 Installation of MongoDb to Ubuntu ARM on Raspberry Pi
